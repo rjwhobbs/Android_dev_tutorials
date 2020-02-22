@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "382678411870",
+    "firebase_url": "https://fdone-mlkit-test.firebaseio.com",
+    "project_id": "fdone-mlkit-test",
+    "storage_bucket": "fdone-mlkit-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382678411870:android:b7e58a12a076764e2622cf",
+        "android_client_info": {
+          "package_name": "com.example.fdone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382678411870-15vc89i8b08lsbd39tgaqnqgit1i07nq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTnswZgLE2qa64Ld9rBUAbuor9c8QQdJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382678411870-15vc89i8b08lsbd39tgaqnqgit1i07nq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         List<Question> questionList = new QuestionBank().getQuestions(new AnswerListAsyncResponse() {
             @Override
             public void processFinished(ArrayList<Question> questionArrayList) {
-                Log.d("Inside", "processFinished: " + questionArrayList);
+                Log.d("xx1", "processFinished: " + questionArrayList);
             }
         });
     }

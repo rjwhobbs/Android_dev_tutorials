@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.triviatest.data.AnswerListAsyncResponse;
 import com.example.triviatest.data.QuestionBank;
@@ -13,6 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView questionTextview;
+    private TextView questionCounterTextview;
+    private Button trueButton;
+    private Button falseButton;
+    private ImageButton nextButton;
+    private ImageButton prevButton;
+    private int currentQuestionIndex = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

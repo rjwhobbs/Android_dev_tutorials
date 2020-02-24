@@ -7,4 +7,6 @@
     <string name="previous_button">previous button</string>
     <string name="counter_questions">0 out of 100</string>
     <string name="placeholder">Please wait for questions to load ...</string>
+    <string name="correct_answer">YES have a biscuit</string>
+    <string name="wrong_answer">Ahh next time hey</string>
 </resources>

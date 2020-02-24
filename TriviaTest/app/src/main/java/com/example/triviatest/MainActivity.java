@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.triviatest.data.AnswerListAsyncResponse;
 import com.example.triviatest.data.QuestionBank;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int currentQuestionIndex = 0;
     private List<Question> questionList;
     private int questionListSize = 0;
+    private boolean answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         prevButton = findViewById(R.id.prev_button);
         trueButton = findViewById(R.id.true_button);
         falseButton = findViewById(R.id.false_button);
-        questionCounterTextview = findViewById(R.id.counter_text);
+        questionCounterTextview = findViewById(R.id.counter_questions);
         questionTextview = findViewById(R.id.question_textview);
 
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 questionTextview.setText(questionArrayList.get(currentQuestionIndex).getAnswer());
                 questionListSize = questionArrayList.size();
+
                 Log.d("xx1", "processFinished: " + questionArrayList);
             }
         });
@@ -78,19 +81,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.true_button:
+                    checkAnswer(true);
                     break;
 
                 case R.id.false_button:
+                    checkAnswer(false);
                     break;
 
             }
         }
     }
 
+    private void checkAnswer(boolean userAnswer) {
+        answer = questionList.get(currentQuestionIndex).isAnswerTrue();
+        int toastMessageId = 0;
+
+        if(userAnswer == answer) {
+            toastMessageId = R.string.correct_answer;
+        } else {
+            toastMessageId = R.string.wrong_answer;
+        }
+
+        Toast.makeText(MainActivity.this, toastMessageId, Toast.LENGTH_SHORT)
+                .show();
+    }
+
     private void updateQuestion() {
         String question = questionList.get(currentQuestionIndex).getAnswer();
         questionTextview.setText(question);
-//        questionCounterTextview.setText(currentQuestionIndex + " / " + questionList.size()); // 0 / 234
+        questionCounterTextview.setText(currentQuestionIndex + " / " + (questionListSize - 1));
 
     }
 }

@@ -1,10 +1,13 @@
 package com.example.triviatest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -82,10 +85,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.true_button:
                     checkAnswer(true);
+                    updateQuestion();
                     break;
 
                 case R.id.false_button:
                     checkAnswer(false);
+                    updateQuestion();
                     break;
 
             }
@@ -99,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(userAnswer == answer) {
             toastMessageId = R.string.correct_answer;
         } else {
+            shakeAnimation();
             toastMessageId = R.string.wrong_answer;
         }
 
@@ -111,5 +117,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         questionTextview.setText(question);
         questionCounterTextview.setText(currentQuestionIndex + " / " + (questionListSize - 1));
 
+    }
+
+    private void shakeAnimation() {
+        Animation shake = AnimationUtils.loadAnimation(MainActivity.this, R.anim.shake_animation);
+        CardView cardView = findViewById(R.id.cardView);
+        cardView.setAnimation(shake);
     }
 }

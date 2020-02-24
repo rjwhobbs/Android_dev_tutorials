@@ -40,10 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         questionCounterTextview = findViewById(R.id.counter_text);
         questionTextview = findViewById(R.id.question_textview);
 
-        nextButton.setOnClickListener(this);
-        prevButton.setOnClickListener(this);
-        trueButton.setOnClickListener(this);
-        falseButton.setOnClickListener(this);
+
+            nextButton.setOnClickListener(this);
+            prevButton.setOnClickListener(this);
+            trueButton.setOnClickListener(this);
+            falseButton.setOnClickListener(this);
+
+
 
         questionList = new QuestionBank().getQuestions(new AnswerListAsyncResponse() {
             @Override
@@ -63,22 +66,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.prev_button:
-                currentQuestionIndex = (currentQuestionIndex + questionListSize - 1) % questionListSize;
-                updateQuestion();
-                break;
-            case R.id.next_button:
-                currentQuestionIndex = (currentQuestionIndex + 1) % questionListSize;
-                updateQuestion();
-                break;
+        if (questionListSize != 0) {
+            switch (v.getId()) {
+                case R.id.prev_button:
+                    currentQuestionIndex = (currentQuestionIndex + questionListSize - 1) % questionListSize;
+                    updateQuestion();
+                    break;
+                case R.id.next_button:
+                    currentQuestionIndex = (currentQuestionIndex + 1) % questionListSize;
+                    updateQuestion();
+                    break;
 
-            case R.id.true_button:
-                break;
+                case R.id.true_button:
+                    break;
 
-            case R.id.false_button:
-                break;
+                case R.id.false_button:
+                    break;
 
+            }
         }
     }
 

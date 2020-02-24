@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton prevButton;
     private int currentQuestionIndex = 0;
     private List<Question> questionList;
+    private int questionListSize = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void processFinished(ArrayList<Question> questionArrayList) {
 
                 questionTextview.setText(questionArrayList.get(currentQuestionIndex).getAnswer());
+                questionListSize = questionArrayList.size();
                 Log.d("xx1", "processFinished: " + questionArrayList);
             }
         });
@@ -63,10 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.prev_button:
-
+                currentQuestionIndex = (currentQuestionIndex + questionListSize - 1) % questionListSize;
+                updateQuestion();
                 break;
             case R.id.next_button:
-                currentQuestionIndex = (currentQuestionIndex + 1) % questionList.size();
+                currentQuestionIndex = (currentQuestionIndex + 1) % questionListSize;
                 updateQuestion();
                 break;
 
